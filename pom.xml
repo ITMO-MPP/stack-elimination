@@ -10,7 +10,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jmh.version>1.21</jmh.version>
-        <atomicfu.version>0.12.11</atomicfu.version>
+        <atomicfu.version>0.14.4</atomicfu.version>
         <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
         <kotlin.version>1.3.50</kotlin.version>
     </properties>
@@ -24,8 +24,8 @@
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
-            <artifactId>lincheck</artifactId>
-            <version>2.3</version>
+            <artifactId>lincheck-jvm</artifactId>
+            <version>2.14.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -95,8 +95,6 @@
                         </goals>
                         <configuration>
                             <output>${project.build.directory}/classes-pre-atomicfu</output>
-                            <!-- "VH" to use Java 9 VarHandle, "BOTH" to produce multi-version code -->
-                            <variant>FU</variant>
                         </configuration>
                     </execution>
                     <execution>
@@ -117,6 +115,8 @@
                         </goals>
                         <configuration>
                             <input>${project.build.directory}/classes-pre-atomicfu</input>
+                            <!-- "VH" to use Java 9 VarHandle, "BOTH" to produce multi-version code -->
+                            <variant>FU</variant>
                         </configuration>
                     </execution>
                 </executions>
@@ -126,16 +126,14 @@
 
     <repositories>
         <repository>
-            <id>bintray-kotlin-kotlinx</id>
-            <name>bintray</name>
-            <url>https://kotlin.bintray.com/kotlinx</url>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2/</url>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>bintray-kotlin-kotlinx</id>
-            <name>bintray-plugins</name>
-            <url>https://kotlin.bintray.com/kotlinx</url>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2/</url>
         </pluginRepository>
     </pluginRepositories>
 </project>
